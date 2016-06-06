@@ -46,12 +46,11 @@ class PeakflowSuds:
     def runXmlQuery(self, query, output_format = 'xml'):
         return self.soap.runXmlQuery(query = query, output_format = output_format)
 
-    def getDosAlertSummariesXML(self, alert_id):
-        print "AlertID:", alert_id
-        return self.client.service.getDosAlertSummariesXML(alertID = alert_id)
+    def getDosAlertSummariesXML(self, filter):
+        return self.client.service.getDosAlertSummariesXML(filter=filter)
 
     def getDosAlertDetailsXML(self, alert_id):
-        return self.soap.getDosAlertDetailsXML(alertID = alert_id)
+        return self.client.service.getDosAlertDetailsXML(alertID = alert_id)
 
     def getDosAlertGraph(self, alert_id, width, height):
         return self.soap.getDosAlertGraph(alertID = alert_id, width = width, height = height)

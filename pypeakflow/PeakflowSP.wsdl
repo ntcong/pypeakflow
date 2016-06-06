@@ -88,54 +88,250 @@
 	  </xsd:sequence>
       </xsd:complexType>
 
+      <xsd:complexType name="DosAlertDetailsRates">
+	<xsd:sequence>
+	    <xsd:element name="bps"		type="xsd:unsignedInt"/>
+	    <xsd:element name="pps"		type="xsd:unsignedInt"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="DosAlertDetailsItem">
+	<xsd:sequence>
+	    <xsd:element name="id"		type="xsd:string"/>
+	    <xsd:element name="name"		type="xsd:string"/>
+	    <xsd:element name="mo"		type="tns:DosAlertDetailsRates"/>
+	    <xsd:element name="net"		type="tns:DosAlertDetailsRates"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="DosAlertTopPatternsDetails">
+	<xsd:sequence>
+	    <xsd:element name="protocol"	type="xsd:string"/>
+	    <xsd:element name="src_ip"		type="xsd:string"/>
+	    <xsd:element name="src_port"	type="xsd:unsignedInt"/>
+	    <xsd:element name="src_port_name"	type="xsd:string"/>
+	    <xsd:element name="dst_ip"		type="xsd:string"/>
+	    <xsd:element name="dst_port"	type="xsd:unsignedInt"/>
+	    <xsd:element name="dst_port_name"	type="xsd:string"/>
+	    <xsd:element name="tcp_flags"	type="xsd:string"/>
+	    <xsd:element name="bps"		type="xsd:unsignedInt"/>
+	    <xsd:element name="pps"		type="xsd:unsignedInt"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="DosAlertTopPatternsItem">
+	<xsd:sequence>
+	    <xsd:element name="router_id"	type="xsd:unsignedInt"/>
+	    <xsd:element name="router_name"	type="xsd:string"/>
+	    <xsd:element name="patterns"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertTopPatternsDetails"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="DosAlertPacketDistribution">
+	<xsd:sequence>
+	    <xsd:element name="packet_size_0_to_50"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_51_to_100"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_101_to_150"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_151_to_200"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_201_to_250"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_251_to_300"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_301_to_350"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_351_to_400"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_401_to_450"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_451_to_500"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_501_to_550"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_551_to_600"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_601_to_650"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_651_to_700"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_701_to_750"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_751_to_800"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_801_to_850"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_851_to_900"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_901_to_950"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_951_to_1000"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1001_to_1050"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1051_to_1100"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1101_to_1150"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1151_to_1200"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1201_to_1250"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1251_to_1300"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1301_to_1350"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1351_to_1400"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1401_to_1450"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1451_to_1500"	type="xsd:unsignedInt"/>
+	    <xsd:element name="packet_size_1501_and_greater"	type="xsd:unsignedInt"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="DosAlertPacketDistributionBoundary">
+	<xsd:sequence>
+	    <xsd:element name="mo"		type="tns:DosAlertPacketDistribution"/>
+	    <xsd:element name="net"		type="tns:DosAlertPacketDistribution"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+       <xsd:complexType name="DosAlertDetailsInterfaces">
+	<xsd:sequence>
+	    <xsd:element name="name"		type="xsd:string"/>
+	    <xsd:element name="direction"	type="xsd:string"/>
+	    <xsd:element name="max_bps"		type="xsd:unsignedInt"/>
+	    <xsd:element name="max_pps"		type="xsd:unsignedInt"/>
+	</xsd:sequence>
+       </xsd:complexType>
+
+       <xsd:complexType name="DosAlertDetailsRouters">
+	<xsd:sequence>
+	    <xsd:element name="id"		type="xsd:unsignedInt"/>
+	    <xsd:element name="name"		type="xsd:string"/>
+	    <xsd:element name="max_bps"		type="xsd:unsignedInt"/>
+	    <xsd:element name="max_pps"		type="xsd:unsignedInt"/>
+	    <xsd:element name="interfaces"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsInterfaces"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
+       <xsd:complexType name="DosAlertDetailsRoutersBoundary">
+	<xsd:sequence>
+	    <xsd:element name="mo"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsRouters"/>
+	    <xsd:element name="net"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsRouters"/>
+	    <xsd:element name="none"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsRouters"/>
+	</xsd:sequence>
+      </xsd:complexType>
+
       <xsd:complexType name="DosAlertDetails">
 	<xsd:sequence>
 	    <xsd:element name="id"		type="xsd:unsignedInt"/>
-	    <xsd:element name="bytes_total"	
-				minOccurs="0" type="xsd:double"/>
+	    <xsd:element name="start"		type="xsd:dateTime"/>
+	    <xsd:element name="stop"		type="xsd:dateTime"/>
+	    <!-- bytes_total used by dos1 alerts -->
+	    <xsd:element name="bytes_total"
+			minOccurs="0"
+			maxOccurs="1"
+			type="xsd:unsignedInt"/>
+	    <xsd:element name="dest_addr"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="dest_tcp_ports"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="dest_udp_ports"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="protos"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="src_addr"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="src_tcp_ports"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="src_udp_ports"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="icmp_type_and_code"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="misuse_types"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="src_asn"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="src_countries"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="tcp_flags"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertDetailsItem"/>
+	    <xsd:element name="top_patterns"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertTopPatternsItem"/>
+	    <xsd:element name="packet_distribution"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertPacketDistributionBoundary"/>
+	    <xsd:element name="alert_routers"
+			minOccurs="0"
+			maxOccurs="1"
+			type="tns:DosAlertDetailsRoutersBoundary"/>
+	    <!-- dos1 elements -->
 	    <xsd:element name="packets_total"
-				minOccurs="0" type="xsd:double"/>
+			minOccurs="0"
+			type="xsd:double"/>
 	    <xsd:element name="src_prefixes"
-				minOccurs="0"
-				maxOccurs="unbounded"
-				type="tns:PrefixTraffic"/>
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:PrefixTraffic"/>
 	    <xsd:element name="dst_prefixes"
-				minOccurs="0"
-				maxOccurs="unbounded"
-				type="tns:PrefixTraffic"/>
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:PrefixTraffic"/>
 	    <xsd:element name="src_ports"
-				minOccurs="0"
-				maxOccurs="unbounded"
-				type="tns:PortTraffic"/>
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:PortTraffic"/>
 	    <xsd:element name="dst_ports"
-				minOccurs="0"
-				maxOccurs="unbounded"
-				type="tns:PortTraffic"/>
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:PortTraffic"/>
 	    <xsd:element name="protocols"
-				minOccurs="0"
-				maxOccurs="unbounded"
-				type="tns:ProtocolTraffic"/>
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:ProtocolTraffic"/>
 	    <xsd:element name="tcpFlags"
-				minOccurs="0"
-				maxOccurs="unbounded"
-				type="tns:TcpFlagsTraffic"/>
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:TcpFlagsTraffic"/>
 	   <xsd:element name="impact_bps"
-	       		   minOccurs="0"
-			   maxOccurs="unbounded"
-			   type="xsd:float"/>
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="xsd:float"/>
 	   <xsd:element name="impact_pps"
-	       		   minOccurs="0"
-			   maxOccurs="unbounded"
-			   type="xsd:float"/>
-
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="xsd:float"/>
+	    <xsd:element name="routers"
+			minOccurs="0"
+			maxOccurs="unbounded"
+			type="tns:DosAlertRouter"/>
+	   <!-- end dos1 elements -->
 	</xsd:sequence>
-    </xsd:complexType>
+      </xsd:complexType>
 
       <xsd:complexType name="DosAlertSummary">
 	<xsd:sequence>
 	    <!-- Basic alert details -->
 	    <xsd:element name="id"		type="xsd:unsignedInt"/>
 	    <xsd:element name="type"		type="xsd:string"/>
+	    <xsd:element name="is_fast_detected" type="xsd:boolean"/>
 	    <xsd:element name="importance"	type="tns:AlertImportance"/>
 	    <xsd:element name="classification"	type="xsd:string"/>
 	    <xsd:element name="device_gid"	type="xsd:unsignedInt"/>
@@ -192,6 +388,10 @@
 	       		   minOccurs="0"
 			   maxOccurs="unbounded"
 			   type="xsd:float"/>
+	   <xsd:element name="max_impact_boundary"
+			   minOccurs="0"
+			   maxOccurs="unbounded"
+			   type="xsd:string"/>
 
 	    <!-- 
 	       "Thumbnail" impact data points: a small number of points
@@ -215,6 +415,13 @@
 	       		   minOccurs="0"
 	       		   maxOccurs="unbounded"
 	      		   type="xsd:float"/>
+
+	    <!-- Only Profiled Router alerts have dos_version -->
+	   <xsd:element name="dos_version"
+			minOccurs="0"
+			maxOccurs="1"
+			type="xsd:unsignedInt"/>
+
 	</xsd:sequence>
     </xsd:complexType>
 
@@ -526,8 +733,8 @@
       <part name="alertId"	type="xsd:unsignedInt"/>
   </message>
 
-  <message name="getDosAlertMisuseOrProfiledDetailsResponse">
-      <part name="results"	type="tns:DosAlertDetails"/>
+  <message name="getDosAlertDetailsResponse">
+	  <part name="results"	type="tns:DosAlertDetails"/>
   </message>
 
   <message name="getDosAlertDetailsXMLResponse">
@@ -757,9 +964,9 @@
       <output message="tns:getDosAlertSummariesXMLResponse"/>
     </operation>
 
-    <operation name="getDosAlertMisuseOrProfiledDetails">
+    <operation name="getDosAlertDetails">
       <input message="tns:getDosAlertDetails"/>
-      <output message="tns:getDosAlertMisuseOrProfiledDetailsResponse"/>
+      <output message="tns:getDosAlertDetailsResponse"/>
     </operation>
 
     <operation name="getDosAlertDetailsXML">
@@ -1014,7 +1221,7 @@
       </output>
     </operation>
 
-    <operation name="getDosAlertMisuseOrProfiledDetails">
+    <operation name="getDosAlertDetails">
       <soap:operation soapAction="urn:PeakflowSPAction"/>
       <input>
 	<soap:body use="encoded"
